@@ -19,7 +19,4 @@ RUN pip install --upgrade pip
 ADD requirements.txt /requirements.txt
 RUN pip install -r /requirements.txt
 
-EXPOSE 8000
-EXPOSE 8080
-
 CMD python3
