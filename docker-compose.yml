@@ -17,3 +17,12 @@ services:
       environment:
         - PORT=8080
       restart: unless-stopped
+
+  web:
+    build: .
+    command: python3 manage.py runserver
+    volumes:
+      - .:/app
+    depends_on:
+      - temperature
+      - windspeed
