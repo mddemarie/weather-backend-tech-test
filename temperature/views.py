@@ -1,18 +1,19 @@
-# from django.shortcuts import render
-import datetime
+from django.http import Http404
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
 
-from client import TemperatureClient
-
-
-def get_temperature():
-    temperature_client = TemperatureClient()
-    date = '{}Z'.format(datetime.datetime.now().replace(microsecond=0).isoformat())
-    params = {
-        'at': date
-    }
-    resp = temperature_client.request('get', params)
-    return resp.json()
+from .serializers import TemperatureSerializer
 
 
-class TempertureList():
-    pass
+class TemperatureList(APIView):
+    """
+    List all temperatures between start_date and end_date.
+    """
+    def get(self, request, format=None):
+        serializer = TemperatureSerializer()
+        context = {
+            'start': start_date,
+            'end': end_date
+            }
+        return Response().render(data=serializer.data, renderer_context=context)
