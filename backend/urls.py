@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url
 
-from temperature import TemperatureList
+from temperature.views import TemperatureList
 
 urlpatterns = [
-    url(r'^temperatures?$', views.DeviceList.as_view()),
+    url(r'^temperatures', TemperatureList.as_view()),
 ]
+
+# (?P<start_date>[A-Z][0-9]+) RegEx for start_date
