@@ -4,17 +4,15 @@ import datetime
 from client import TemperatureClient
 
 
-def get_temperatures():
+def get_temperature():
     temperature_client = TemperatureClient()
     date = '{}Z'.format(datetime.datetime.now().replace(microsecond=0).isoformat())
-    url = '?'
     params = {
         'at': date
     }
-    resp = temperature_client.request(url, 'get', params)
+    resp = temperature_client.request('get', params)
     return resp.json()
 
-print(get_temperatures())
 
 class TempertureList():
     pass
