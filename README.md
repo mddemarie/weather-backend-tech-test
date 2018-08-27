@@ -19,3 +19,23 @@ With the command:
 ```
 docker-compose up
 ```
+
+### For Development:
+
+First, run:
+
+```
+docker-compose build web
+```
+
+Then, run:
+
+```
+docker-compose up -d
+```
+
+And then, run web service in Bash:
+
+```
+docker-compose run web bash
+```
