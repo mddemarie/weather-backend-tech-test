@@ -20,6 +20,26 @@ With the command:
 docker-compose up
 ```
 
+### In Browser
+
+Go to the url:
+
+```
+http://localhost:8001/temperatures?start=2018-08-01T00:00:00Z&end=2018-08-07T00:00:00Z
+```
+
+I use the port 8001.
+
+
+### Tests
+
+Run the test with the command:
+
+```
+python3 manage.py test
+```
+
+
 ### For Development:
 
 First, run:
