@@ -33,7 +33,7 @@ class TemperatureTest(APITestCase):
         """
         See the list of temperatures.
         """
-        response = self.client.get(self.temperature_url)
+        response = self.client.get(self.url, self.start, self.end)
         print('##########', response)
         self.assertEqual(response.status_code, status.HTTP_200_OK, response.data)
         self.assertEqual(len(response.data), 1)
@@ -43,8 +43,8 @@ class TemperatureTest(APITestCase):
     #     Start date cannot be empty.
     #     """
     #     response = self.client.get(self.url, { # fix this
-    #         k: v for (k, v) in self.order_post.items()
-    #         if k is not 'size'
+    #         k: v for (k, v) in self.temperatures.items()
+    #         if k is not 'date'
     #     })
     #     self.assertEqual(
     #         response.status_code, status.HTTP_400_BAD_REQUEST, response.data
@@ -56,8 +56,8 @@ class TemperatureTest(APITestCase):
     #     Start date field cannot be empty.
     #     """
     #     response = self.client.get(self.url, { # fix this
-    #         k: v for (k, v) in self.order_post.items()
-    #         if k is not 'customer_name'
+    #         k: v for (k, v) in self.temperatures.items()
+    #         if k is not 'date'
     #     })
     #     self.assertEqual(
     #         response.status_code, status.HTTP_400_BAD_REQUEST, response.data
