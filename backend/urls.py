@@ -14,11 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.conf.urls import url
+# from django.urls import path
 
 from temperature.views import TemperatureList
 
 urlpatterns = [
-    url(r'^temperatures', TemperatureList.as_view()),
+    # path('temperatures?<slug:start>&<slug:end>/', TemperatureList, name='temperature-list'),
+    url(r'^temperatures(?P<start>\w+)&(?P<end>\w+)/$', TemperatureList.as_view()),
 ]
-
-# (?P<start_date>[A-Z][0-9]+) RegEx for start_date
