@@ -19,6 +19,4 @@ RUN pip install --upgrade pip
 ADD requirements.txt /requirements.txt
 RUN pip install -r /requirements.txt
 
-EXPOSE 8001
-
-CMD python3
+CMD python3 manage.py runserver 0.0.0.0:8001
