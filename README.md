@@ -31,7 +31,7 @@ http://localhost:8001/temperatures?start=2018-08-01T00:00:00Z&end=2018-08-07T00:
 I use the port 8001.
 
 
-### Tests
+### Integration Tests
 
 Run the test with the command:
 
@@ -39,6 +39,14 @@ Run the test with the command:
 python3 manage.py test
 ```
 
+### Unit Tests
+
+Run the tests with the commands:
+
+```
+python3 -m unittest temperature/test_data.py
+python3 -m unittest temperature/test_client.py
+```
 
 ### For Development:
 
