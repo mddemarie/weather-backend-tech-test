@@ -1,12 +1,14 @@
 from rest_framework import status
 from rest_framework.test import APITestCase
+from rest_framework.test import APIClient
+from urllib.parse import urlencode
 
-from .serializers import TemperatureSerializer
+from .data import TemperatureSerializer
 
 
 class TemperatureTest(APITestCase):
     @classmethod
-    def setUpClass(cls):
+    def setUpTestData(cls):
         super().setUpClass()
         cls.url = '/temperatures'
         cls.start = '2018-08-12T00:00:00Z'
@@ -27,17 +29,20 @@ class TemperatureTest(APITestCase):
         cls.serializer = TemperatureSerializer()
         cls.temperature_list = cls.serializer.data(cls.start, cls.end)
 
-        cls.temperature_url = '{}?start={}&end={}'.format(cls.url, cls.start, cls.end) 
+        cls.params = urlencode({'start': cls.start, 'end': cls.end})
+        cls.temperature_url = '{}?'.format(cls.url, cls.params)
+
 
     def test_list_temperatures(self):
         """
         See the list of temperatures.
         """
-        response = self.client.get(self.url, self.start, self.end)
-        print('##########', response)
+        client = APIClient()
+        response = self.client.get(self.temperature_url, self.temperature_list, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK, response.data)
         self.assertEqual(len(response.data), 1)
 
+    # integration tests for edge cases:
     # def test_list_temperatures_fails_without_start_date(self):
     #     """
     #     Start date cannot be empty.
