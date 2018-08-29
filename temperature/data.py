@@ -25,7 +25,7 @@ class TemperatureSerializer(object):
         diff_in_days = delta.days
         return diff_in_days
 
-    def data(self, start_date, end_date):
+    def all_data(self, start_date, end_date):
         delta = self.get_delta(start_date, end_date)
         result_data = []
 
@@ -36,8 +36,3 @@ class TemperatureSerializer(object):
             start_date = start_date.isoformat()
 
         return result_data
-
-
-# For testing purposes:
-# serializer = TemperatureSerializer()
-# print(serializer.data("2018-08-01T00:00:00Z", "2018-08-07T00:00:00Z"))
