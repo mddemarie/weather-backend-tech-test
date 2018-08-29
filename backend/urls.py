@@ -13,12 +13,12 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.conf.urls import url
-# from django.urls import path
+from django.conf.urls import url, include
+from rest_framework import routers
 
-from temperature.views import TemperatureList
+from temperature.views import TemperaturesList
 
-urlpatterns = [
-    # path('temperatures?<slug:start>&<slug:end>/', TemperatureList, name='temperature-list'),
-    url(r'^temperatures(?P<start>\w+)&(?P<end>\w+)/$', TemperatureList.as_view()),
-]
+router = routers.DefaultRouter()
+router.register(r'^temperatures(?P<start>\w+)&(?P<end>\w+)/$', TemperaturesList.as_view(), base_name='data-detail')
+
+urlpatterns = router.urls
