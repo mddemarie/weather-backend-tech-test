@@ -34,7 +34,6 @@ class TemperatureTest(APITestCase):
         """
         client = APIClient()
         response = self.client.get(self.temperature_url, self.temperature_list, format='json')
-        print(response)
         self.assertEqual(response.status_code, status.HTTP_200_OK, response)
         self.assertEqual(len(response.data), 1)
 
