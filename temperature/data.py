@@ -4,7 +4,7 @@ Just a fake serializer. No database needed.
 from datetime import datetime, timedelta
 import dateutil.parser
 
-from .client import TemperatureClient
+from temperature.client import TemperatureClient
 
 class TemperatureSerializer(object):
 

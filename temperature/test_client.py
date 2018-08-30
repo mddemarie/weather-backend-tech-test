@@ -1,6 +1,6 @@
 import unittest
 
-from .client import TemperatureClient
+from temperature.client import TemperatureClient
 
 
 class TemperatureTestCase(unittest.TestCase):
