@@ -1,4 +1,5 @@
 from rest_framework.response import Response
+from django.http import HttpResponse, JsonResponse
 from rest_framework.renderers import JSONRenderer
 from rest_framework import viewsets
 
@@ -14,4 +15,4 @@ class TemperatureViewSet(viewsets.ViewSet):
         end = self.kwargs.get('end')
 
         data = TemperatureSerializer().all_data(start, end)
-        return JSONRenderer().render(data)
+        return JSONResponse(data, status=200)
